@@ -1,0 +1,378 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Report_Download" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Folder_path" Type="InOutArgument(x:String)" />
+    <x:Property Name="Arg_Status" Type="InOutArgument(x:Boolean)" />
+    <x:Property Name="In_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1209,3438</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Report_Download_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="68">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="1087,3373" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1045,3281" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Report_Download" sap:VirtualizedContainerService.HintSize="1007,3054" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="Month" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="965,51" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="Excel">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:KillProcess>
+          <Sequence DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="965,812" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="Folder" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[Folder]" sap:VirtualizedContainerService.HintSize="797,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[Folder_path+In_Config(&quot;Folder&quot;).ToString]" PathType="Folder" />
+            <If Condition="[Folder=True]" sap:VirtualizedContainerService.HintSize="797,341" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,171" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[Folder_path+In_Config(&quot;Folder&quot;).ToString]" Recursive="True" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Folder Does Not Exist&quot;]" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="797,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Folder_path+In_Config(&quot;Folder&quot;).ToString]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="797,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;FILE DELETED&quot;]" />
+          </Sequence>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="965,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="460,843" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="Report_2" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="NGL_HRM_STAFF_NORMS_REPORT" sap:VirtualizedContainerService.HintSize="376,627" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="ui:DatabaseConnection" Name="db" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="DB_OUT" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.Odbc" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DatabaseConnection="[db]" />
+                    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" CommandType="Text" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DataTable="[DB_OUT]" DisplayName="Run query" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" ProviderName="System.Data.Odbc" Sql="select t.emp_code employee_code,&#xA;       e.emp_name employee_name,&#xA;       b.branch_name branch,&#xA;       p.post_name post_name,&#xA;       t.region region_Name,&#xA;       b1.branch_id,&#xA;       b1.branch_id station_branch,&#xA;       b1.branch_name station_branchname,&#xA;       d.dep_name department,&#xA;       t.assigned_by assigned_by,&#xA;       t.assigned_on assigned_on, &#xA;       min(em.from_dt) dep_join_dt,&#xA;       max(em1.from_dt) cur_join_dt,&#xA;       (p.cont_phone) phone_num&#xA;  from mana0809.tbl_emp_station_branch t,&#xA;       mana0809.employee_master        e,&#xA;       mana0809.post_mst               p,&#xA;       mana0809.department_mst         d,&#xA;       mana0809.branch_master          b,&#xA;       mana0809.branch_master          b1,&#xA;       mana0809.employ_transfer_dtl    em,&#xA;       mana0809.employ_transfer_dtl    em1,&#xA;       mana0809.employ_personal_dtl    p&#xA; where e.emp_code = t.emp_code&#xA;   and e.post_id = p.post_id&#xA;   and d.dep_id = t.dep_id&#xA;   and b.branch_id = t.branch_id&#xA;   and b1.branch_id = t.station_branch&#xA;   and em.status_id = 8&#xA;   and em1.status_id = 8&#xA;   and em.emp_code = e.emp_code&#xA;   and em.department_id = e.department_id&#xA;   and em1.emp_code = e.emp_code&#xA;   and em1.post_id = e.post_id&#xA;   and p.emp_code = e.emp_code&#xA;   and t.dep_id=637&#xA; group by t.emp_code,&#xA;          e.emp_name,&#xA;          b.branch_name,&#xA;          b1.branch_id,&#xA;          t.region,&#xA;          p.post_name,&#xA;          b1.branch_id,&#xA;          b1.branch_name,&#xA;          d.dep_name,&#xA;          t.assigned_by,&#xA;          t.assigned_on,&#xA;          p.cont_phone" TimeoutMS="300000">
+                      <ui:ExecuteQuery.Parameters>
+                        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                      </ui:ExecuteQuery.Parameters>
+                    </ui:ExecuteQuery>
+                    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[DB_OUT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="REPORT_2" WorkbookPath="[&quot;C:\Users\&quot;+Environment.UserName+&quot;\Documents\UiPath\SPL_Top 10 sales Officers Reg wise Report\Report\Report1.xlsx&quot;]" />
+                    <ui:DatabaseDisconnect DatabaseConnection="[db]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_2" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;REPORT 2 DATA DOWNLOADED&quot;]" />
+                  </Sequence>
+                </Sequence>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <Assign sap:VirtualizedContainerService.HintSize="965,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Month]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Date.Now.ToString("dd")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[Month=&quot;01&quot;]" sap:VirtualizedContainerService.HintSize="965,969" sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="460,811" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="Report_3" sap:VirtualizedContainerService.HintSize="418,719" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="DISBURSMENT_REPORT" sap:VirtualizedContainerService.HintSize="376,627" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="ui:DatabaseConnection" Name="db" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="DB_OUT" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_4" ProviderName="System.Data.Odbc" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DatabaseConnection="[db]" />
+                    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" CommandType="Text" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DataTable="[DB_OUT]" DisplayName="Run query" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" ProviderName="System.Data.Odbc" Sql="[&quot;select 'Scheme Name', 'Customer Name', 'Loan ID', 'Application ID', 'Loan Amount', 'Loan Balance', 'Loan Date', 'EMI Amount', 'Tnterest Rate', 'Tenure', 'PDC Stock', 'Maturity Date', 'Application Date', 'Application By', 'State Name', 'District Name', 'Executive Code', 'Executive Name', 'Branch ID', 'Paid Dt', 'Cust_id', 'Branch_name', 'process_fee', 'approvedemp_name', 'approved_branch', 'LC_Code', 'LC_Status', 'LC_Position', 'LG_Code', 'LG_Status', 'LG_Type', 'Loan Settlement Date', 'Settled Executive Code', 'Settled Executive Name', 'Settlement Mode', 'Loan Status' from dual union all select a.&quot;&quot;Scheme Name&quot;&quot;, a. &quot;&quot;Customer Name&quot;&quot;, to_char(a.&quot;&quot;Loan ID&quot;&quot;), to_char('''' || b.application_id), to_char(a.&quot;&quot;Loan Amount&quot;&quot;), to_char(a.&quot;&quot;Loan Balance&quot;&quot;), to_char(a.tra_dt) LoanDate, to_char(a.&quot;&quot;EMI Amount&quot;&quot;), to_char(a.&quot;&quot;Tnterest Rate&quot;&quot;), to_char(a.&quot;&quot;Tenure&quot;&quot;), to_char(a.&quot;&quot;PDC Stock&quot;&quot;), to_char(a.&quot;&quot;Maturity Date&quot;&quot;), to_char(a.&quot;&quot;Application Date&quot;&quot;), to_char(a.&quot;&quot;Application By&quot;&quot;), d.state_name, e.district_name, to_char(a.executive_code), a.executive_name, to_char(b.branch_id), to_char(fg.value_date) paid_dt, to_char(b.cust_id), to_char(c.branch_name), to_char(m.approved_process_fee), to_char(k.emp_name), to_char(c.branch_name), to_char(lg.lc_code), to_char(lg.lc_status), to_char(lg.lc_position), to_char(lg.lg_code), to_char(lg.lg_status), to_char(lg.lg_type), to_char(p.close_dt), to_char(p.employecode), to_char(p.employee), to_char(p.Settled_Mode), decode(b.status_id, 0, 'Settled', 1, 'Live', 7, 'Cancelled', 'UnKnown') from mana0809.view_nloan_disb_rpt_all a, mana0809.branch_master c, mana0809.state_master d, mana0809.district_master e, mana0809.tbl_nloan_product_master s, mana0809.tbl_nloan_loan_mst b left outer join(select f.doc_id, to_char(min(f.value_date)) value_date from mana0809.payment_master f group by f.doc_id) fg on fg.doc_id = b.loan_id left join mana0809.tbl_nloan_application m on m.loan_id = b.loan_id left join mana0809.employee_master k on k.emp_code = m.approved_by left join mana0809.LG_LC_Status lg on lg.loan_id = b.loan_id left join (select distinct e.emp_code as employecode, e.emp_name as employee, t.cls_dt as close_dt, p.loan_id, case when p.pay_mode = 'CS' then 'CASH' when p.pay_mode = 'MN' then 'Manual' when p.pay_mode = 'CH' then 'CHEQUE' when p.pay_mode = 'TR' then 'NEFT' end as Settled_Mode from mana0809.tbl_nloan_loan_tran p, mana0809.tbl_nloan_loan_mst t left join mana0809.employee_master e on to_char(e.emp_code) = t.enter_by where p.descr = 'LOAN SETTLED' and t.loan_id = p.loan_id) p on p.loan_id = b.loan_id where a.loan_id = b.loan_id and b.branch_id = c.BRANCH_ID and c.state_id = d.state_id and e.district_id = c.district_id and a.PRODUCT_ID = s.product_id and s.dept_id = '637' and b.status_id = '1' and fg.value_date &gt;= trunc(ADD_Months(SYSDATE,-1),'mm') and fg.value_date &lt;= trunc(sysdate) - 1  &quot;]" TimeoutMS="300000">
+                      <ui:ExecuteQuery.Parameters>
+                        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                      </ui:ExecuteQuery.Parameters>
+                    </ui:ExecuteQuery>
+                    <ui:WriteRange AddHeaders="False" DataTable="[DB_OUT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_4" SheetName="Top 10 Sales" WorkbookPath="[Folder_path+In_Config(&quot;Report&quot;).ToString]">
+                      <ui:WriteRange.StartingCell>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ui:WriteRange.StartingCell>
+                    </ui:WriteRange>
+                    <ui:DatabaseDisconnect DatabaseConnection="[db]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_4" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;REPORT 3 DATA DOWNLOADED&quot;]" />
+                  </Sequence>
+                </Sequence>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="460,811" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="Report_3" sap:VirtualizedContainerService.HintSize="418,719" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="DISBURSMENT_REPORT" sap:VirtualizedContainerService.HintSize="376,627" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="ui:DatabaseConnection" Name="db" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="DB_OUT" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_5" ProviderName="System.Data.Odbc" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DatabaseConnection="[db]" />
+                    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" CommandType="Text" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DataTable="[DB_OUT]" DisplayName="Run query" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" ProviderName="System.Data.Odbc" Sql="[&quot;select 'Scheme Name', 'Customer Name', 'Loan ID', 'Application ID', 'Loan Amount', 'Loan Balance', 'Loan Date', 'EMI Amount', 'Tnterest Rate', 'Tenure', 'PDC Stock', 'Maturity Date', 'Application Date', 'Application By', 'State Name', 'District Name', 'Executive Code', 'Executive Name', 'Branch ID', 'Paid Dt', 'Cust_id', 'Branch_name', 'process_fee', 'approvedemp_name', 'approved_branch', 'LC_Code', 'LC_Status', 'LC_Position', 'LG_Code', 'LG_Status', 'LG_Type', 'Loan Settlement Date', 'Settled Executive Code', 'Settled Executive Name', 'Settlement Mode', 'Loan Status' from dual union all select a.&quot;&quot;Scheme Name&quot;&quot;, a. &quot;&quot;Customer Name&quot;&quot;, to_char(a.&quot;&quot;Loan ID&quot;&quot;), to_char('''' || b.application_id), to_char(a.&quot;&quot;Loan Amount&quot;&quot;), to_char(a.&quot;&quot;Loan Balance&quot;&quot;), to_char(a.tra_dt) LoanDate, to_char(a.&quot;&quot;EMI Amount&quot;&quot;), to_char(a.&quot;&quot;Tnterest Rate&quot;&quot;), to_char(a.&quot;&quot;Tenure&quot;&quot;), to_char(a.&quot;&quot;PDC Stock&quot;&quot;), to_char(a.&quot;&quot;Maturity Date&quot;&quot;), to_char(a.&quot;&quot;Application Date&quot;&quot;), to_char(a.&quot;&quot;Application By&quot;&quot;), d.state_name, e.district_name, to_char(a.executive_code), a.executive_name, to_char(b.branch_id), to_char(fg.value_date) paid_dt, to_char(b.cust_id), to_char(c.branch_name), to_char(m.approved_process_fee), to_char(k.emp_name), to_char(c.branch_name), to_char(lg.lc_code), to_char(lg.lc_status), to_char(lg.lc_position), to_char(lg.lg_code), to_char(lg.lg_status), to_char(lg.lg_type), to_char(p.close_dt), to_char(p.employecode), to_char(p.employee), to_char(p.Settled_Mode), decode(b.status_id, 0, 'Settled', 1, 'Live', 7, 'Cancelled', 'UnKnown') from mana0809.view_nloan_disb_rpt_all a, mana0809.branch_master c, mana0809.state_master d, mana0809.district_master e, mana0809.tbl_nloan_product_master s, mana0809.tbl_nloan_loan_mst b left outer join(select f.doc_id, to_char(min(f.value_date)) value_date from mana0809.payment_master f group by f.doc_id) fg on fg.doc_id = b.loan_id left join mana0809.tbl_nloan_application m on m.loan_id = b.loan_id left join mana0809.employee_master k on k.emp_code = m.approved_by left join mana0809.LG_LC_Status lg on lg.loan_id = b.loan_id left join (select distinct e.emp_code as employecode, e.emp_name as employee, t.cls_dt as close_dt, p.loan_id, case when p.pay_mode = 'CS' then 'CASH' when p.pay_mode = 'MN' then 'Manual' when p.pay_mode = 'CH' then 'CHEQUE' when p.pay_mode = 'TR' then 'NEFT' end as Settled_Mode from mana0809.tbl_nloan_loan_tran p, mana0809.tbl_nloan_loan_mst t left join mana0809.employee_master e on to_char(e.emp_code) = t.enter_by where p.descr = 'LOAN SETTLED' and t.loan_id = p.loan_id) p on p.loan_id = b.loan_id where a.loan_id = b.loan_id and b.branch_id = c.BRANCH_ID and c.state_id = d.state_id and e.district_id = c.district_id and a.PRODUCT_ID = s.product_id and s.dept_id = '637' and b.status_id = '1' and fg.value_date &gt;= trunc(sysdate, 'mm') and fg.value_date &lt;= trunc(sysdate) - 1  &quot;]" TimeoutMS="300000">
+                      <ui:ExecuteQuery.Parameters>
+                        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                      </ui:ExecuteQuery.Parameters>
+                    </ui:ExecuteQuery>
+                    <ui:WriteRange AddHeaders="False" DataTable="[DB_OUT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_5" SheetName="Top 10 Sales" WorkbookPath="[Folder_path+In_Config(&quot;Report&quot;).ToString]">
+                      <ui:WriteRange.StartingCell>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ui:WriteRange.StartingCell>
+                    </ui:WriteRange>
+                    <ui:DatabaseDisconnect DatabaseConnection="[db]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_5" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;REPORT 3 DATA DOWNLOADED&quot;]" />
+                  </Sequence>
+                </Sequence>
+              </Sequence>
+            </If.Else>
+          </If>
+          <Sequence DisplayName="Report_3" sap:VirtualizedContainerService.HintSize="965,719" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="DISBURSMENT_REPORT" sap:VirtualizedContainerService.HintSize="376,627" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="ui:DatabaseConnection" Name="db" />
+                <Variable x:TypeArguments="sd:DataTable" Name="DB_OUT" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="System.Data.Odbc" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DatabaseConnection="[db]" />
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" CommandType="Text" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DataTable="[DB_OUT]" DisplayName="Run query" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" ProviderName="System.Data.Odbc" Sql="[&quot;select 'Scheme Name', 'Customer Name', 'Loan ID', 'Application ID', 'Loan Amount', 'Loan Balance', 'Loan Date', 'EMI Amount', 'Tnterest Rate', 'Tenure', 'PDC Stock', 'Maturity Date', 'Application Date', 'Application By', 'State Name', 'District Name', 'Executive Code', 'Executive Name', 'Branch ID', 'Paid Dt', 'Cust_id', 'Branch_name', 'process_fee', 'approvedemp_name', 'approved_branch', 'LC_Code', 'LC_Status', 'LC_Position', 'LG_Code', 'LG_Status', 'LG_Type', 'Loan Settlement Date', 'Settled Executive Code', 'Settled Executive Name', 'Settlement Mode', 'Loan Status' from dual union all select a.&quot;&quot;Scheme Name&quot;&quot;, a. &quot;&quot;Customer Name&quot;&quot;, to_char(a.&quot;&quot;Loan ID&quot;&quot;), to_char('''' || b.application_id), to_char(a.&quot;&quot;Loan Amount&quot;&quot;), to_char(a.&quot;&quot;Loan Balance&quot;&quot;), to_char(a.tra_dt) LoanDate, to_char(a.&quot;&quot;EMI Amount&quot;&quot;), to_char(a.&quot;&quot;Tnterest Rate&quot;&quot;), to_char(a.&quot;&quot;Tenure&quot;&quot;), to_char(a.&quot;&quot;PDC Stock&quot;&quot;), to_char(a.&quot;&quot;Maturity Date&quot;&quot;), to_char(a.&quot;&quot;Application Date&quot;&quot;), to_char(a.&quot;&quot;Application By&quot;&quot;), d.state_name, e.district_name, to_char(a.executive_code), a.executive_name, to_char(b.branch_id), to_char(fg.value_date) paid_dt, to_char(b.cust_id), to_char(c.branch_name), to_char(m.approved_process_fee), to_char(k.emp_name), to_char(c.branch_name), to_char(lg.lc_code), to_char(lg.lc_status), to_char(lg.lc_position), to_char(lg.lg_code), to_char(lg.lg_status), to_char(lg.lg_type), to_char(p.close_dt), to_char(p.employecode), to_char(p.employee), to_char(p.Settled_Mode), decode(b.status_id, 0, 'Settled', 1, 'Live', 7, 'Cancelled', 'UnKnown') from mana0809.view_nloan_disb_rpt_all a, mana0809.branch_master c, mana0809.state_master d, mana0809.district_master e, mana0809.tbl_nloan_product_master s, mana0809.tbl_nloan_loan_mst b left outer join(select f.doc_id, to_char(min(f.value_date)) value_date from mana0809.payment_master f group by f.doc_id) fg on fg.doc_id = b.loan_id left join mana0809.tbl_nloan_application m on m.loan_id = b.loan_id left join mana0809.employee_master k on k.emp_code = m.approved_by left join mana0809.LG_LC_Status lg on lg.loan_id = b.loan_id left join (select distinct e.emp_code as employecode, e.emp_name as employee, t.cls_dt as close_dt, p.loan_id, case when p.pay_mode = 'CS' then 'CASH' when p.pay_mode = 'MN' then 'Manual' when p.pay_mode = 'CH' then 'CHEQUE' when p.pay_mode = 'TR' then 'NEFT' end as Settled_Mode from mana0809.tbl_nloan_loan_tran p, mana0809.tbl_nloan_loan_mst t left join mana0809.employee_master e on to_char(e.emp_code) = t.enter_by where p.descr = 'LOAN SETTLED' and t.loan_id = p.loan_id) p on p.loan_id = b.loan_id where a.loan_id = b.loan_id and b.branch_id = c.BRANCH_ID and c.state_id = d.state_id and e.district_id = c.district_id and a.PRODUCT_ID = s.product_id and s.dept_id = '637' and b.status_id = '1' and fg.value_date &gt;= trunc(sysdate, 'mm') and fg.value_date &lt;= trunc(sysdate) - 1  &quot;]" TimeoutMS="300000">
+                <ui:ExecuteQuery.Parameters>
+                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                </ui:ExecuteQuery.Parameters>
+              </ui:ExecuteQuery>
+              <ui:WriteRange AddHeaders="False" DataTable="[DB_OUT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="Top 10 Sales" WorkbookPath="[Folder_path+In_Config(&quot;Report&quot;).ToString]">
+                <ui:WriteRange.StartingCell>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ui:WriteRange.StartingCell>
+              </ui:WriteRange>
+              <ui:DatabaseDisconnect DatabaseConnection="[db]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_3" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;REPORT 3 DATA DOWNLOADED&quot;]" />
+            </Sequence>
+          </Sequence>
+          <Assign sap:VirtualizedContainerService.HintSize="965,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[Arg_Status]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1011,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="376,280" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[exception.Message]" />
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[Arg_Status]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
