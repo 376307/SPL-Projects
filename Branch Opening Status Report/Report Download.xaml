@@ -1,0 +1,377 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Report_Download" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Timenow" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Report_Download.Timenow>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Report_Download.Timenow>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1177,4276</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Report_Download_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="632,4051" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="590,3351" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Report_Download" sap:VirtualizedContainerService.HintSize="552,3124" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="ui:DatabaseConnection" Name="DB_CON" />
+            <Variable x:TypeArguments="sd:DataTable" Name="Output" />
+            <Variable x:TypeArguments="x:Boolean" Name="File1" />
+            <Variable x:TypeArguments="ui:DatabaseConnection" Name="DB_CON1" />
+            <Variable x:TypeArguments="sd:DataTable" Name="Output1" />
+            <Variable x:TypeArguments="sd:DataTable" Name="Output2" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="Excel">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:KillProcess>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Report Downloading Started&quot;]" />
+          <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[File1]" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\&quot;+Environment.UserName+&quot;\Documents\UiPath\Branch Opening Status Report\Report\Branch Punching Report.xlsx&quot;]" PathType="File">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:PathExists>
+          <If Condition="[File1=True]" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="If_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[&quot;C:\Users\&quot;+Environment.UserName+&quot;\Documents\UiPath\Branch Opening Status Report\Report\Branch Punching Report.xlsx&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:DeleteFileX>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;File Does Not Exist&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </Sequence>
+            </If.Else>
+          </If>
+          <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="510,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DatabaseConnection="[DB_CON]" />
+          <ui:DatabaseTransaction ContinueOnError="{x:Null}" DatabaseConnection="{x:Null}" ConnectionString="Dsn=RPA_RO;uid=RPA_RO;pwd=Robot#123" DisplayName="Start Transaction" sap:VirtualizedContainerService.HintSize="510,417" sap2010:WorkflowViewState.IdRef="DatabaseTransaction_1" ProviderName="System.Data.Odbc" UseTransaction="True">
+            <ui:DatabaseTransaction.Body>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,308" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[Output]" DisplayName="Run query" ExistingDbConnection="[DB_CON]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="select da.emp_code,&#xD;&#xA;       em.EMP_NAME,&#xD;&#xA;       da.branch_id,&#xD;&#xA;       b.BRANCH_NAME,&#xD;&#xA;       b.area_name,&#xD;&#xA;       b.reg_name,&#xD;&#xA;       te.fzm,&#xD;&#xA;       p.post_name,&#xD;&#xA;       d.designation,&#xD;&#xA;       te.dep_name,&#xD;&#xA;       bm.in_time as shift_time,&#xD;&#xA;       to_char(curr_date) as day,&#xD;&#xA;       decode(da.m_time, NULL, '----------', da.m_time) as morning_time,&#xD;&#xA;       decode(e_time, NULL, '----------', e_time) as evening_time,&#xD;&#xA;       case&#xD;&#xA;         when (da.m_time is null and da.pay_id not in (50, 52)) and&#xD;&#xA;              (da.pay_id not in (51, 52) and da.e_time is null) then&#xD;&#xA;          'Absent'&#xD;&#xA;         else&#xD;&#xA;          case&#xD;&#xA;            when da.pay_id in (50) and da.e_time is not null then&#xD;&#xA;             'Morning-REG'&#xD;&#xA;            else&#xD;&#xA;             case&#xD;&#xA;               when da.pay_id in (51) and da.m_time is not null then&#xD;&#xA;                'Evening-REG'&#xD;&#xA;               else&#xD;&#xA;                case&#xD;&#xA;                  when da.pay_id in (52) then&#xD;&#xA;                   'BOTH-REG'&#xD;&#xA;                  else&#xD;&#xA;                   case&#xD;&#xA;                     when (da.m_time &gt; bt1.in_time and da.m_time &lt;&gt; 'TOUR' and&#xD;&#xA;                          da.m_time &lt;&gt; 'COMPEN' and da.pay_id not in (50, 7, 52)) and&#xD;&#xA;                          (da.e_time is null and da.pay_id not in (51, 7, 52)) then&#xD;&#xA;                      'Late &amp; Non-Marking'&#xD;&#xA;                     else&#xD;&#xA;                      case&#xD;&#xA;                        when da.m_time &lt;= bt1.in_time and&#xD;&#xA;                             (da.e_time is null and da.pay_id not in (51, 52)) then&#xD;&#xA;                         'Non-Marking Evening'&#xD;&#xA;                        else&#xD;&#xA;                         case&#xD;&#xA;                           when (da.m_time is null and da.pay_id not in (50, 52, 7)) and&#xD;&#xA;                                da.e_time &lt; bt2.out_time then&#xD;&#xA;                            'Non-Marking Morning &amp; Early-Going'&#xD;&#xA;                           else&#xD;&#xA;                            case&#xD;&#xA;                              when (da.m_time is null and da.pay_id not in (50, 52)) and&#xD;&#xA;                                   da.e_time &gt;= bt2.out_time then&#xD;&#xA;                               'Non-Marking Morning'&#xD;&#xA;                              else&#xD;&#xA;                               case&#xD;&#xA;                                 when da.m_time &lt;= bt1.in_time and&#xD;&#xA;                                      (da.e_time &lt; bt2.out_time and da.e_time &lt;&gt; 'TOUR' and&#xD;&#xA;                                      da.e_time &lt;&gt; 'COMPEN' and da.pay_id not in (51, 52, 7)) then&#xD;&#xA;                                  'Early-Going'&#xD;&#xA;                                 else&#xD;&#xA;                                  case&#xD;&#xA;                                    when (da.m_time &gt; bt1.in_time and da.pay_id not in (50, 52)) and&#xD;&#xA;                                         (da.e_time &lt; bt2.out_time and da.pay_id not in (51, 52, 7)) then&#xD;&#xA;                                     'Late &amp; Early Going'&#xD;&#xA;                                    else&#xD;&#xA;                                     case&#xD;&#xA;                                       when (da.m_time &gt; bt1.in_time and da.m_time &lt;&gt; 'TOUR' and&#xD;&#xA;                                            da.m_time &lt;&gt; 'COMPEN' and da.pay_id not in (50, 52, 7)) and&#xD;&#xA;                                            da.e_time &gt;= bt2.out_time then&#xD;&#xA;                                        'Late'&#xD;&#xA;                                       else&#xD;&#xA;                                        case&#xD;&#xA;                                          when da.pay_id in (50) and da.E_TIME is null then&#xD;&#xA;                                           'REG-Morning &amp; Non-Marking Evening'&#xD;&#xA;                                          else&#xD;&#xA;                                           case&#xD;&#xA;                                             when da.pay_id in (51) and da.M_TIME is null then&#xD;&#xA;                                              'REG-EVENING &amp; Non-Marking Morning'&#xD;&#xA;                                             else&#xD;&#xA;                                              case&#xD;&#xA;                                                when da.pay_id in (50) and da.e_time &lt;&gt; 'TOUR' and&#xD;&#xA;                                                     da.e_time &lt;&gt; 'COMPEN' and da.E_TIME &lt; bt2.out_time then&#xD;&#xA;                                                 'REG-Morning &amp; Early-Going'&#xD;&#xA;                                                else&#xD;&#xA;                                                 case&#xD;&#xA;                                                   when da.pay_id in (51) and da.m_time &lt;&gt; 'TOUR' and&#xD;&#xA;                                                        da.m_time &lt;&gt; 'COMPEN' and da.M_TIME &gt; bt1.in_time then&#xD;&#xA;                                                    'REG-Evening &amp; Late'&#xD;&#xA;                                                   else&#xD;&#xA;                                                    case&#xD;&#xA;                                                      when da.pay_id in (52) then&#xD;&#xA;                                                       'REG-Morning &amp; Evening'&#xD;&#xA;                                                      else&#xD;&#xA;                                                       '-'&#xD;&#xA;                                                    end&#xD;&#xA;                                                 end&#xD;&#xA;                                              end&#xD;&#xA;                                           end&#xD;&#xA;                                        end&#xD;&#xA;                                     end&#xD;&#xA;                                  end&#xD;&#xA;                               end&#xD;&#xA;                            end&#xD;&#xA;                         end&#xD;&#xA;                      end&#xD;&#xA;                   end&#xD;&#xA;                end&#xD;&#xA;             end&#xD;&#xA;          end&#xD;&#xA;       end as remarks,&#xD;&#xA;       case&#xD;&#xA;         when da.gun_status &lt;&gt; 0 then&#xD;&#xA;          'PUNCHING-BLOCK'&#xD;&#xA;         else&#xD;&#xA;          '--'&#xD;&#xA;       end as block&#xD;&#xA;  from mana0809.daily_attend       da,&#xD;&#xA;       mana0809.emp_master         em,&#xD;&#xA;       mana0809.time_tab           bt1,&#xD;&#xA;       mana0809.time_tab           bt2,&#xD;&#xA;       mana0809.branch_dtl_new     b,&#xD;&#xA;       mana0809.post_mst           p,&#xD;&#xA;       mana0809.designation_master d,&#xD;&#xA;       mana0809.branch_time bm,&#xD;&#xA;       mana0809.tableau_employ_dtl te&#xD;&#xA; where em.emp_code = da.emp_code&#xD;&#xA;   and da.FIRM_ID = 1&#xD;&#xA;   and da.curr_date = to_date(sysdate)&#xD;&#xA;   and bt1.shift_id = da.m_shift&#xD;&#xA;   and te.emp_code=da.emp_code&#xD;&#xA;   and te.emp_code=em.EMP_CODE&#xD;&#xA;   and bt2.shift_id = da.e_shift&#xD;&#xA;   and da.branch_id = b.BRANCH_ID&#xD;&#xA;   and p.post_id = em.POST_ID&#xD;&#xA;   and d.designation_id = em.DESIGNATION_ID&#xD;&#xA;   and bm.branch_id=em.BRANCH_ID&#xD;&#xA;   and b.BRANCH_ID &gt; '0'">
+                  <ui:ExecuteQuery.Parameters>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:ExecuteQuery.Parameters>
+                </ui:ExecuteQuery>
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[Output2]" DisplayName="Run query" ExistingDbConnection="[DB_CON]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="select da.emp_code,&#xD;&#xA;       em.EMP_NAME,&#xD;&#xA;       da.branch_id,&#xD;&#xA;       b.BRANCH_NAME,&#xD;&#xA;       b.area_name,&#xD;&#xA;       b.reg_name,&#xD;&#xA;       te.fzm,&#xD;&#xA;       p.post_name,&#xD;&#xA;       d.designation,&#xD;&#xA;       te.dep_name,&#xD;&#xA;       bm.in_time,&#xD;&#xA;       to_char(curr_date) as day,&#xD;&#xA;       decode(da.m_time, NULL, '----------', da.m_time) as morning_time,&#xD;&#xA;       decode(e_time, NULL, '----------', e_time) as evening_time,&#xD;&#xA;       case&#xD;&#xA;         when (da.m_time is null and da.pay_id not in (50, 52)) and&#xD;&#xA;              (da.pay_id not in (51, 52) and da.e_time is null) then&#xD;&#xA;          'Absent'&#xD;&#xA;         else&#xD;&#xA;          case&#xD;&#xA;            when da.pay_id in (50) and da.e_time is not null then&#xD;&#xA;             'Morning-REG'&#xD;&#xA;            else&#xD;&#xA;             case&#xD;&#xA;               when da.pay_id in (51) and da.m_time is not null then&#xD;&#xA;                'Evening-REG'&#xD;&#xA;               else&#xD;&#xA;                case&#xD;&#xA;                  when da.pay_id in (52) then&#xD;&#xA;                   'BOTH-REG'&#xD;&#xA;                  else&#xD;&#xA;                   case&#xD;&#xA;                     when (da.m_time &gt; bt1.in_time and da.m_time &lt;&gt; 'TOUR' and&#xD;&#xA;                          da.m_time &lt;&gt; 'COMPEN' and da.pay_id not in (50, 7, 52)) and&#xD;&#xA;                          (da.e_time is null and da.pay_id not in (51, 7, 52)) then&#xD;&#xA;                      'Late &amp; Non-Marking'&#xD;&#xA;                     else&#xD;&#xA;                      case&#xD;&#xA;                        when da.m_time &lt;= bt1.in_time and&#xD;&#xA;                             (da.e_time is null and da.pay_id not in (51, 52)) then&#xD;&#xA;                         'Non-Marking Evening'&#xD;&#xA;                        else&#xD;&#xA;                         case&#xD;&#xA;                           when (da.m_time is null and da.pay_id not in (50, 52, 7)) and&#xD;&#xA;                                da.e_time &lt; bt2.out_time then&#xD;&#xA;                            'Non-Marking Morning &amp; Early-Going'&#xD;&#xA;                           else&#xD;&#xA;                            case&#xD;&#xA;                              when (da.m_time is null and da.pay_id not in (50, 52)) and&#xD;&#xA;                                   da.e_time &gt;= bt2.out_time then&#xD;&#xA;                               'Non-Marking Morning'&#xD;&#xA;                              else&#xD;&#xA;                               case&#xD;&#xA;                                 when da.m_time &lt;= bt1.in_time and&#xD;&#xA;                                      (da.e_time &lt; bt2.out_time and da.e_time &lt;&gt; 'TOUR' and&#xD;&#xA;                                      da.e_time &lt;&gt; 'COMPEN' and da.pay_id not in (51, 52, 7)) then&#xD;&#xA;                                  'Early-Going'&#xD;&#xA;                                 else&#xD;&#xA;                                  case&#xD;&#xA;                                    when (da.m_time &gt; bt1.in_time and da.pay_id not in (50, 52)) and&#xD;&#xA;                                         (da.e_time &lt; bt2.out_time and da.pay_id not in (51, 52, 7)) then&#xD;&#xA;                                     'Late &amp; Early Going'&#xD;&#xA;                                    else&#xD;&#xA;                                     case&#xD;&#xA;                                       when (da.m_time &gt; bt1.in_time and da.m_time &lt;&gt; 'TOUR' and&#xD;&#xA;                                            da.m_time &lt;&gt; 'COMPEN' and da.pay_id not in (50, 52, 7)) and&#xD;&#xA;                                            da.e_time &gt;= bt2.out_time then&#xD;&#xA;                                        'Late'&#xD;&#xA;                                       else&#xD;&#xA;                                        case&#xD;&#xA;                                          when da.pay_id in (50) and da.E_TIME is null then&#xD;&#xA;                                           'REG-Morning &amp; Non-Marking Evening'&#xD;&#xA;                                          else&#xD;&#xA;                                           case&#xD;&#xA;                                             when da.pay_id in (51) and da.M_TIME is null then&#xD;&#xA;                                              'REG-EVENING &amp; Non-Marking Morning'&#xD;&#xA;                                             else&#xD;&#xA;                                              case&#xD;&#xA;                                                when da.pay_id in (50) and da.e_time &lt;&gt; 'TOUR' and&#xD;&#xA;                                                     da.e_time &lt;&gt; 'COMPEN' and da.E_TIME &lt; bt2.out_time then&#xD;&#xA;                                                 'REG-Morning &amp; Early-Going'&#xD;&#xA;                                                else&#xD;&#xA;                                                 case&#xD;&#xA;                                                   when da.pay_id in (51) and da.m_time &lt;&gt; 'TOUR' and&#xD;&#xA;                                                        da.m_time &lt;&gt; 'COMPEN' and da.M_TIME &gt; bt1.in_time then&#xD;&#xA;                                                    'REG-Evening &amp; Late'&#xD;&#xA;                                                   else&#xD;&#xA;                                                    case&#xD;&#xA;                                                      when da.pay_id in (52) then&#xD;&#xA;                                                       'REG-Morning &amp; Evening'&#xD;&#xA;                                                      else&#xD;&#xA;                                                       '-'&#xD;&#xA;                                                    end&#xD;&#xA;                                                 end&#xD;&#xA;                                              end&#xD;&#xA;                                           end&#xD;&#xA;                                        end&#xD;&#xA;                                     end&#xD;&#xA;                                  end&#xD;&#xA;                               end&#xD;&#xA;                            end&#xD;&#xA;                         end&#xD;&#xA;                      end&#xD;&#xA;                   end&#xD;&#xA;                end&#xD;&#xA;             end&#xD;&#xA;          end&#xD;&#xA;       end as remarks,&#xD;&#xA;       case&#xD;&#xA;         when da.gun_status &lt;&gt; 0 then&#xD;&#xA;          'PUNCHING-BLOCK'&#xD;&#xA;         else&#xD;&#xA;          '--'&#xD;&#xA;       end as block&#xD;&#xA;  from mana0809.daily_attend       da,&#xD;&#xA;       mana0809.emp_master         em,&#xD;&#xA;       mana0809.time_tab           bt1,&#xD;&#xA;       mana0809.time_tab           bt2,&#xD;&#xA;       mana0809.branch_dtl_new     b,&#xD;&#xA;       mana0809.post_mst           p,&#xD;&#xA;       mana0809.designation_master d,&#xD;&#xA;       mana0809.branch_time bm,&#xD;&#xA;       mana0809.tableau_employ_dtl te&#xD;&#xA; where em.emp_code = da.emp_code&#xD;&#xA;   and da.FIRM_ID = 1&#xD;&#xA;   and da.curr_date = to_date(sysdate)&#xD;&#xA;   and bt1.shift_id = da.m_shift&#xD;&#xA;   and te.emp_code=da.emp_code&#xD;&#xA;   and te.emp_code=em.EMP_CODE&#xD;&#xA;   and bt2.shift_id = da.e_shift&#xD;&#xA;   and da.branch_id = b.BRANCH_ID&#xD;&#xA;   and p.post_id = em.POST_ID&#xD;&#xA;   and d.designation_id = em.DESIGNATION_ID&#xD;&#xA;   and bm.branch_id=em.BRANCH_ID&#xD;&#xA;   and b.BRANCH_ID &gt; '0'&#xD;&#xA;   and p.post_name in('B.H (G)','HOUSE KEEPING ASSISTANT','JR. ASST.','JR. OFFICER','JR.ASST (I.A - G)','JR.ASST (I.A - NG)','JR.ASST (I.A - PG)',&#xD;&#xA;                      'JR.ASST (I.A)','JR.ASST(G)','JR.ASST(N.G)','JR.ASST(P.G)','JR.ASST(T-G)','SR. ASST.','SR.ASST (N.G)','TEMPORARY HOUSE KEEPING ASSISTANT',&#xD;&#xA;                      'A.B.H (F)','SALES EXECUTIVE','JR ASST(BUFFER)') &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   &#xD;&#xA;   ">
+                  <ui:ExecuteQuery.Parameters>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:ExecuteQuery.Parameters>
+                </ui:ExecuteQuery>
+              </Sequence>
+            </ui:DatabaseTransaction.Body>
+          </ui:DatabaseTransaction>
+          <ui:WriteRange AddHeaders="True" DataTable="[Output]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="510,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Punching Report" WorkbookPath="Report\Branch Punching Report.xlsx">
+            <ui:WriteRange.StartingCell>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ui:WriteRange.StartingCell>
+          </ui:WriteRange>
+          <ui:WriteRange AddHeaders="True" DataTable="[Output2]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="510,115" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="Punching Report(B)" WorkbookPath="Report\Branch Punching Report.xlsx">
+            <ui:WriteRange.StartingCell>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ui:WriteRange.StartingCell>
+          </ui:WriteRange>
+          <ui:DatabaseDisconnect DatabaseConnection="[DB_CON]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Report Downloading Completed&quot;]" />
+          <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[File1]" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[&quot;C:\Users\&quot;+Environment.UserName+&quot;\Documents\UiPath\Branch Opening Status Report\Report\Branch Norms Report.xlsx&quot;]" PathType="File">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:PathExists>
+          <If Condition="[File1=True]" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="If_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[&quot;C:\Users\&quot;+Environment.UserName+&quot;\Documents\UiPath\Branch Opening Status Report\Report\Branch Norms Report.xlsx&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:DeleteFileX>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;File(Norms Report)Does Not Exist&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </Sequence>
+            </If.Else>
+          </If>
+          <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="510,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.Odbc" ConnectionString="Dsn=KPMG;uid=KPMG;pwd=Asd$1234" DatabaseConnection="[DB_CON1]" />
+          <ui:DatabaseTransaction ContinueOnError="{x:Null}" DatabaseConnection="{x:Null}" ConnectionString="Dsn=KPMG;uid=KPMG;pwd=Asd$1234" DisplayName="Start Transaction" sap:VirtualizedContainerService.HintSize="510,289" sap2010:WorkflowViewState.IdRef="DatabaseTransaction_2" ProviderName="System.Data.Odbc" UseTransaction="True">
+            <ui:DatabaseTransaction.Body>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[Output1]" DisplayName="Run query" ExistingDbConnection="[DB_CON1]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="SELECT &#xD;&#xA;      a.branch_id,&#xD;&#xA;      a.branch_name,&#xD;&#xA;      a.fzm,&#xD;&#xA;      a.norms&#xD;&#xA;FROM tbl_tableau_emp_hrmdta1 a">
+                  <ui:ExecuteQuery.Parameters>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:ExecuteQuery.Parameters>
+                </ui:ExecuteQuery>
+              </Sequence>
+            </ui:DatabaseTransaction.Body>
+          </ui:DatabaseTransaction>
+          <ui:WriteRange AddHeaders="True" DataTable="[Output1]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="510,115" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Norms" WorkbookPath="Report\Branch Norms Report.xlsx">
+            <ui:WriteRange.StartingCell>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ui:WriteRange.StartingCell>
+          </ui:WriteRange>
+          <ui:WriteCell Cell="K1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="510,115" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="Punching Report(B)" Text="SHIFT_TIME" WorkbookPath="Report\Branch Punching Report.xlsx" />
+          <ui:DatabaseDisconnect DatabaseConnection="[DB_CON1]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_2" />
+          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="510,587" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="Report\Branch Punching Report.xlsx">
+            <ui:ExcelApplicationScope.Body>
+              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,478" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="Output" />
+                    <Variable x:TypeArguments="sd:DataTable" Name="Output4" />
+                    <Variable x:TypeArguments="sd:DataTable" Name="Absentop" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ExcelReadRange AddHeaders="True" DataTable="[Output4]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Punching Report(B)">
+                    <ui:ExcelReadRange.Range>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ui:ExcelReadRange.Range>
+                  </ui:ExcelReadRange>
+                  <ui:FilterDataTable DataTable="[Output4]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="434,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[Absentop]" SelectColumnsMode="Keep">
+                    <ui:FilterDataTable.Filters>
+                      <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                        <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                          <ui:FilterOperationArgument.Column>
+                            <InArgument x:TypeArguments="x:String">["REMARKS"]</InArgument>
+                          </ui:FilterOperationArgument.Column>
+                          <ui:FilterOperationArgument.Operand>
+                            <InArgument x:TypeArguments="x:String">["Absent"]</InArgument>
+                          </ui:FilterOperationArgument.Operand>
+                        </ui:FilterOperationArgument>
+                      </scg:List>
+                    </ui:FilterDataTable.Filters>
+                    <ui:FilterDataTable.SelectColumns>
+                      <scg:List x:TypeArguments="InArgument" Capacity="4">
+                        <x:Null />
+                      </scg:List>
+                    </ui:FilterDataTable.SelectColumns>
+                  </ui:FilterDataTable>
+                  <ui:ExcelWriteRange AddHeaders="True" DataTable="[Absentop]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="434,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Punching_pivot" StartingCell="A1" />
+                </Sequence>
+              </ActivityAction>
+            </ui:ExcelApplicationScope.Body>
+          </ui:ExcelApplicationScope>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="556,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="590,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Pevot_Format.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="Timenow">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Timenow" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="590,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Punching_Report.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="Timenow">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Timenow" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="590,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Region_Wise.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="590,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ZONE_Wise.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>
