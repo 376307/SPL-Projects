@@ -1,0 +1,12 @@
+options  ( skip=1 )
+load data
+infile 'C:\Users\376307\Documents\UiPath\SPL Daily Transactions Details Of Pay U\Report\Pay U_data\Out_data.csv'
+append into table payu_rpa
+fields terminated by ","
+OPTIONALLY ENCLOSED BY '"'    
+TRAILING NULLCOLS
+(
+TRANS_ID
+)
+
+
